@@ -15,7 +15,7 @@ const devis: Facture[] = [
 
 const recus: Facture[] = [
   { id: "REC-2026-0087", date: "2026-07-02", description: "Reçu — Campagne Facebook Ads « Collection été »", montant: 229500, statut: "Payée" },
-  { id: "REC-2026-0084", date: "2026-06-28", description: "Reçu — Hébergement Business (mensuel)", montant: 16400, statut: "Payée" },
+  { id: "REC-2026-0084", date: "2026-06-28", description: "Reçu — Hébergement Business (mensuel)", montant: 6500, statut: "Payée" },
   { id: "REC-2026-0079", date: "2026-06-21", description: "Reçu — Audit SEO national de juin", montant: 321500, statut: "Payée" },
 ];
 
