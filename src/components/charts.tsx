@@ -6,13 +6,18 @@
 export function BarChart({
   data,
   hauteur = 180,
-  format = (v: number) => `${v}`,
+  unite = "",
 }: {
   data: { label: string; valeur: number }[];
   hauteur?: number;
-  format?: (v: number) => string;
+  /** Unité affichée au survol : "" | "€" | "k€" (sérialisable serveur → client). */
+  unite?: "" | "€" | "k€";
 }) {
   const max = Math.max(...data.map((d) => d.valeur), 1);
+  const format = (v: number) =>
+    unite === "k€"
+      ? `${Math.round(v / 1000).toLocaleString("fr-FR")} k€`
+      : `${v.toLocaleString("fr-FR")}${unite ? ` ${unite}` : ""}`;
   return (
     <div className="flex items-end gap-2 sm:gap-3" style={{ height: hauteur }}>
       {data.map((d) => (

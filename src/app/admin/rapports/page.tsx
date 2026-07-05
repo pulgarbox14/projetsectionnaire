@@ -30,7 +30,7 @@ export default function RapportsPage() {
         <CarteSection titre="Revenus mensuels">
           <BarChart
             data={revenusMensuelsAdmin.map((r) => ({ label: r.mois, valeur: r.montant }))}
-            format={(v) => `${Math.round(v / 1000)} k€`}
+            unite="k€"
           />
         </CarteSection>
 

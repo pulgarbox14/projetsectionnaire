@@ -77,7 +77,7 @@ export default function DashboardPage() {
         <CarteSection titre="Dépenses mensuelles" className="xl:col-span-2">
           <BarChart
             data={depensesMensuelles.map((d) => ({ label: d.mois, valeur: d.montant }))}
-            format={(v) => `${v} €`}
+            unite="€"
           />
         </CarteSection>
         <CarteSection titre="Activités récentes">
