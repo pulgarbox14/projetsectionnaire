@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { CarteSection, PageHeader, Tableau, badgeStatut } from "@/components/ui";
 import { commandesAdmin, type CommandeAdmin } from "@/lib/data";
+import { fcfa } from "@/lib/devise";
 
 const ONGLETS = ["Toutes", "En cours", "Livrée", "En attente", "Annulée"] as const;
 type Onglet = (typeof ONGLETS)[number];
@@ -68,7 +69,7 @@ export default function CommandesPage() {
               <td className="py-3 pr-4 text-gray-500 dark:text-gray-400">{c.service}</td>
               <td className="py-3 pr-4 text-gray-500 dark:text-gray-400">{c.date}</td>
               <td className="py-3 pr-4 font-semibold text-gray-900 dark:text-white">
-                {c.montant.toLocaleString("fr-FR")} €
+                {fcfa(c.montant)}
               </td>
               <td className="py-3 pr-4">
                 <span className={badgeStatut(c.statut)}>{c.statut}</span>

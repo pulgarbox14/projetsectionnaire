@@ -1,6 +1,7 @@
 import { ArrowLeftRight, CheckCircle2, ShoppingBag, Wallet } from "lucide-react";
 import { CarteSection, PageHeader, StatCard, Tableau, badgeStatut } from "@/components/ui";
 import { factures, paiements } from "@/lib/data";
+import { fcfa, fcfaCompact } from "@/lib/devise";
 
 export default function PaiementsPage() {
   const reussis = paiements.filter((p) => p.statut === "Réussi");
@@ -18,7 +19,7 @@ export default function PaiementsPage() {
       <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard
           label="Volume encaissé"
-          valeur={`${volume.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`}
+          valeur={fcfaCompact(volume)}
           variation={`${reussis.length} paiements réussis`}
           icone={<Wallet size={18} />}
         />
@@ -36,7 +37,7 @@ export default function PaiementsPage() {
         />
         <StatCard
           label="Panier moyen"
-          valeur={`${panierMoyen.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`}
+          valeur={fcfaCompact(panierMoyen)}
           variation="par transaction réussie"
           icone={<ShoppingBag size={18} />}
         />
@@ -51,7 +52,7 @@ export default function PaiementsPage() {
                 <td className="py-3 pr-4 text-gray-500 dark:text-gray-400">{p.date}</td>
                 <td className="py-3 pr-4 text-gray-700 dark:text-gray-300">{p.methode}</td>
                 <td className="py-3 pr-4 font-semibold text-gray-900 dark:text-white">
-                  {p.montant.toLocaleString("fr-FR")} €
+                  {fcfa(p.montant)}
                 </td>
                 <td className="py-3">
                   <span className={badgeStatut(p.statut)}>{p.statut}</span>
@@ -69,7 +70,7 @@ export default function PaiementsPage() {
                 <td className="py-3 pr-4 text-gray-500 dark:text-gray-400">{f.date}</td>
                 <td className="py-3 pr-4 text-gray-700 dark:text-gray-300">{f.description}</td>
                 <td className="py-3 pr-4 font-semibold text-gray-900 dark:text-white">
-                  {f.montant.toLocaleString("fr-FR")} €
+                  {fcfa(f.montant)}
                 </td>
                 <td className="py-3">
                   <span className={badgeStatut(f.statut)}>{f.statut}</span>

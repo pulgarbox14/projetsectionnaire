@@ -3,6 +3,7 @@ import { ArrowRight, LifeBuoy, ShoppingCart, TrendingUp, Users } from "lucide-re
 import { BarChart } from "@/components/charts";
 import { CarteSection, PageHeader, StatCard, Tableau, badgeStatut } from "@/components/ui";
 import { commandesAdmin, logsAdmin, revenusMensuelsAdmin, statsAdmin } from "@/lib/data";
+import { fcfa } from "@/lib/devise";
 
 const ICONES_STATS = [Users, TrendingUp, ShoppingCart, LifeBuoy];
 
@@ -39,7 +40,7 @@ export default function AdminPage() {
         <CarteSection titre="Revenus mensuels (MRR)">
           <BarChart
             data={revenusMensuelsAdmin.map((r) => ({ label: r.mois, valeur: r.montant }))}
-            unite="k€"
+            unite="FCFA"
           />
         </CarteSection>
 
@@ -51,7 +52,7 @@ export default function AdminPage() {
                 <td className="py-3 pr-4 text-gray-700 dark:text-gray-300">{c.client}</td>
                 <td className="py-3 pr-4 text-gray-500 dark:text-gray-400">{c.service}</td>
                 <td className="py-3 pr-4 font-semibold text-gray-900 dark:text-white">
-                  {c.montant.toLocaleString("fr-FR")} €
+                  {fcfa(c.montant)}
                 </td>
                 <td className="py-3">
                   <span className={badgeStatut(c.statut)}>{c.statut}</span>

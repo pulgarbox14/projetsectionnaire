@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { BarChart, DonutChart, LineChart } from "@/components/charts";
 import { CarteSection, PageHeader, StatCard, Tableau, badgeStatut } from "@/components/ui";
+import { fcfa } from "@/lib/devise";
 import {
   activitesRecentes,
   depensesMensuelles,
@@ -77,7 +78,7 @@ export default function DashboardPage() {
         <CarteSection titre="Dépenses mensuelles" className="xl:col-span-2">
           <BarChart
             data={depensesMensuelles.map((d) => ({ label: d.mois, valeur: d.montant }))}
-            unite="€"
+            unite="FCFA"
           />
         </CarteSection>
         <CarteSection titre="Activités récentes">
@@ -122,7 +123,7 @@ export default function DashboardPage() {
                 <td className="py-3 pr-4 text-gray-500 dark:text-gray-400">{f.date}</td>
                 <td className="py-3 pr-4 text-gray-700 dark:text-gray-300">{f.description}</td>
                 <td className="py-3 pr-4 font-semibold text-gray-900 dark:text-white">
-                  {f.montant.toLocaleString("fr-FR")} €
+                  {fcfa(f.montant)}
                 </td>
                 <td className="py-3">
                   <span className={badgeStatut(f.statut)}>{f.statut}</span>

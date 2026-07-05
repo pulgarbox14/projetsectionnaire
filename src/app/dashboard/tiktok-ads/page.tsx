@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { CarteSection, PageHeader, Tableau, badgeStatut } from "@/components/ui";
 import { campagnes, methodesPaiement } from "@/lib/data";
+import { fcfa } from "@/lib/devise";
 
 const OBJECTIFS: { nom: string; description: string; icone: React.ReactNode }[] = [
   { nom: "Trafic", description: "Attirez des visiteurs sur votre site.", icone: <MousePointerClick size={18} /> },
@@ -30,7 +31,7 @@ export default function TikTokAdsPage() {
   const campagnesTikTok = campagnes.filter((c) => c.plateforme === "TikTok");
 
   const [objectif, setObjectif] = useState("Notoriété");
-  const [budget, setBudget] = useState("400");
+  const [budget, setBudget] = useState("300000");
   const [pays, setPays] = useState(PAYS[0]);
   const [audience, setAudience] = useState("");
   const [texteAnnonce, setTexteAnnonce] = useState("");
@@ -84,7 +85,7 @@ export default function TikTokAdsPage() {
               <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
                 Numéro de commande :{" "}
                 <span className="font-semibold text-gray-900 dark:text-white">{numeroCommande}</span>
-                {" "}· {objectif} · {budgetNum.toLocaleString("fr-FR")} € · {duree} jours · paiement par {paiement}
+                {" "}· {objectif} · {fcfa(budgetNum)} · {duree} jours · paiement par {paiement}
               </p>
             </div>
             <button type="button" onClick={reinitialiser} className="btn-secondary">
@@ -140,17 +141,17 @@ export default function TikTokAdsPage() {
             <div className="mt-6 grid gap-5 lg:grid-cols-2">
               <div>
                 <label htmlFor="tt-budget" className="label">
-                  Budget total (€)
+                  Budget total (FCFA)
                 </label>
                 <input
                   id="tt-budget"
                   type="number"
-                  min={50}
-                  step={10}
+                  min={30000}
+                  step={5000}
                   value={budget}
                   onChange={(e) => setBudget(e.target.value)}
                   className="input"
-                  placeholder="400"
+                  placeholder="300000"
                 />
               </div>
 
@@ -254,13 +255,13 @@ export default function TikTokAdsPage() {
                 <div>
                   <p className="text-xs text-gray-500 dark:text-gray-400">Budget</p>
                   <p className="mt-0.5 text-sm font-semibold text-gray-900 dark:text-white">
-                    {budgetNum.toLocaleString("fr-FR")} €
+                    {fcfa(budgetNum)}
                   </p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 dark:text-gray-400">Durée</p>
                   <p className="mt-0.5 text-sm font-semibold text-gray-900 dark:text-white">
-                    {duree} jours ({(budgetNum / duree).toLocaleString("fr-FR", { maximumFractionDigits: 2 })} € / jour)
+                    {duree} jours ({fcfa(budgetNum / duree)} / jour)
                   </p>
                 </div>
               </div>
@@ -284,7 +285,7 @@ export default function TikTokAdsPage() {
                 </div>
                 <button type="submit" className="btn-primary shrink-0">
                   <CreditCard size={17} />
-                  Procéder au paiement — {budgetNum.toLocaleString("fr-FR")} €
+                  Procéder au paiement — {fcfa(budgetNum)}
                 </button>
               </div>
             </div>
@@ -302,10 +303,10 @@ export default function TikTokAdsPage() {
                 <td className="py-3 pr-4 font-medium text-gray-900 dark:text-white">{c.nom}</td>
                 <td className="py-3 pr-4 text-gray-700 dark:text-gray-300">{c.objectif}</td>
                 <td className="py-3 pr-4 font-semibold text-gray-900 dark:text-white">
-                  {c.budget.toLocaleString("fr-FR")} €
+                  {fcfa(c.budget)}
                 </td>
                 <td className="py-3 pr-4 text-gray-700 dark:text-gray-300">
-                  {c.depense.toLocaleString("fr-FR")} €
+                  {fcfa(c.depense)}
                 </td>
                 <td className="py-3 pr-4 text-gray-500 dark:text-gray-400">{c.impressions}</td>
                 <td className="py-3 pr-4 text-gray-500 dark:text-gray-400">{c.clics}</td>

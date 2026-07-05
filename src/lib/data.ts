@@ -16,13 +16,13 @@ export const statsDashboard = [
 ];
 
 export const depensesMensuelles = [
-  { mois: "Jan", montant: 420 },
-  { mois: "Fév", montant: 380 },
-  { mois: "Mar", montant: 540 },
-  { mois: "Avr", montant: 460 },
-  { mois: "Mai", montant: 690 },
-  { mois: "Juin", montant: 610 },
-  { mois: "Juil", montant: 725 },
+  { mois: "Jan", montant: 275000 },
+  { mois: "Fév", montant: 249000 },
+  { mois: "Mar", montant: 354000 },
+  { mois: "Avr", montant: 302000 },
+  { mois: "Mai", montant: 452000 },
+  { mois: "Juin", montant: 400000 },
+  { mois: "Juil", montant: 475000 },
 ];
 
 export const trafic30Jours = [
@@ -31,11 +31,11 @@ export const trafic30Jours = [
 ];
 
 export const repartitionDepenses = [
-  { categorie: "Publicité", montant: 1850, couleur: "#2563eb" },
-  { categorie: "Hébergement", montant: 720, couleur: "#6366f1" },
-  { categorie: "Domaines", montant: 240, couleur: "#8b5cf6" },
-  { categorie: "SEO", montant: 980, couleur: "#0ea5e9" },
-  { categorie: "Autres", montant: 310, couleur: "#94a3b8" },
+  { categorie: "Publicité", montant: 1210000, couleur: "#2563eb" },
+  { categorie: "Hébergement", montant: 472000, couleur: "#6366f1" },
+  { categorie: "Domaines", montant: 157000, couleur: "#8b5cf6" },
+  { categorie: "SEO", montant: 643000, couleur: "#0ea5e9" },
+  { categorie: "Autres", montant: 203000, couleur: "#94a3b8" },
 ];
 
 export interface Depense {
@@ -48,11 +48,11 @@ export interface Depense {
 }
 
 export const depensesInitiales: Depense[] = [
-  { id: 1, date: "2026-07-02", categorie: "Publicité", description: "Campagne Facebook — Collection été", montant: 350, facture: "FAC-2026-0142" },
-  { id: 2, date: "2026-06-28", categorie: "Hébergement", description: "Renouvellement plan Business", montant: 24.99, facture: "FAC-2026-0139" },
-  { id: 3, date: "2026-06-21", categorie: "SEO", description: "Audit SEO national — juin", montant: 490, facture: "FAC-2026-0131" },
-  { id: 4, date: "2026-06-15", categorie: "Domaines", description: "entreprise.africa (1 an)", montant: 15.99, facture: "FAC-2026-0127" },
-  { id: 5, date: "2026-06-08", categorie: "Publicité", description: "Campagne TikTok — Notoriété", montant: 275, facture: "FAC-2026-0119" },
+  { id: 1, date: "2026-07-02", categorie: "Publicité", description: "Campagne Facebook — Collection été", montant: 229500, facture: "FAC-2026-0142" },
+  { id: 2, date: "2026-06-28", categorie: "Hébergement", description: "Renouvellement plan Business", montant: 6500, facture: "FAC-2026-0139" },
+  { id: 3, date: "2026-06-21", categorie: "SEO", description: "Audit SEO national — juin", montant: 321000, facture: "FAC-2026-0131" },
+  { id: 4, date: "2026-06-15", categorie: "Domaines", description: "entreprise.africa (1 an)", montant: 10500, facture: "FAC-2026-0127" },
+  { id: 5, date: "2026-06-08", categorie: "Publicité", description: "Campagne TikTok — Notoriété", montant: 180000, facture: "FAC-2026-0119" },
 ];
 
 export interface Facture {
@@ -64,12 +64,12 @@ export interface Facture {
 }
 
 export const factures: Facture[] = [
-  { id: "FAC-2026-0142", date: "2026-07-02", description: "Campagne Facebook Ads — Collection été", montant: 350, statut: "Payée" },
-  { id: "FAC-2026-0139", date: "2026-06-28", description: "Hébergement Business — mensuel", montant: 24.99, statut: "Payée" },
-  { id: "FAC-2026-0135", date: "2026-06-25", description: "Devis — Refonte SEO international", montant: 1200, statut: "En attente" },
-  { id: "FAC-2026-0131", date: "2026-06-21", description: "Audit SEO national — juin", montant: 490, statut: "Payée" },
-  { id: "FAC-2026-0127", date: "2026-06-15", description: "Domaine entreprise.africa (1 an)", montant: 15.99, statut: "Payée" },
-  { id: "FAC-2026-0112", date: "2026-05-30", description: "Campagne TikTok — Génération de leads", montant: 420, statut: "Échue" },
+  { id: "FAC-2026-0142", date: "2026-07-02", description: "Campagne Facebook Ads — Collection été", montant: 229500, statut: "Payée" },
+  { id: "FAC-2026-0139", date: "2026-06-28", description: "Hébergement Business — mensuel", montant: 6500, statut: "Payée" },
+  { id: "FAC-2026-0135", date: "2026-06-25", description: "Devis — Refonte SEO international", montant: 787000, statut: "En attente" },
+  { id: "FAC-2026-0131", date: "2026-06-21", description: "Audit SEO national — juin", montant: 321000, statut: "Payée" },
+  { id: "FAC-2026-0127", date: "2026-06-15", description: "Domaine entreprise.africa (1 an)", montant: 10500, statut: "Payée" },
+  { id: "FAC-2026-0112", date: "2026-05-30", description: "Campagne TikTok — Génération de leads", montant: 275500, statut: "Échue" },
 ];
 
 export interface Paiement {
@@ -81,12 +81,12 @@ export interface Paiement {
 }
 
 export const paiements: Paiement[] = [
-  { id: "PAY-88412", date: "2026-07-02", methode: "Carte bancaire", montant: 350, statut: "Réussi" },
-  { id: "PAY-88377", date: "2026-06-28", methode: "Stripe", montant: 24.99, statut: "Réussi" },
-  { id: "PAY-88301", date: "2026-06-21", methode: "MTN Mobile Money", montant: 490, statut: "Réussi" },
-  { id: "PAY-88264", date: "2026-06-15", methode: "PayPal", montant: 15.99, statut: "Réussi" },
-  { id: "PAY-88191", date: "2026-06-08", methode: "Orange Money", montant: 275, statut: "Réussi" },
-  { id: "PAY-88102", date: "2026-05-30", methode: "Wave", montant: 420, statut: "Échoué" },
+  { id: "PAY-88412", date: "2026-07-02", methode: "Carte bancaire", montant: 229500, statut: "Réussi" },
+  { id: "PAY-88377", date: "2026-06-28", methode: "Stripe", montant: 6500, statut: "Réussi" },
+  { id: "PAY-88301", date: "2026-06-21", methode: "MTN Mobile Money", montant: 321000, statut: "Réussi" },
+  { id: "PAY-88264", date: "2026-06-15", methode: "PayPal", montant: 10500, statut: "Réussi" },
+  { id: "PAY-88191", date: "2026-06-08", methode: "Orange Money", montant: 180000, statut: "Réussi" },
+  { id: "PAY-88102", date: "2026-05-30", methode: "Wave", montant: 275500, statut: "Échoué" },
 ];
 
 export const methodesPaiement = [
@@ -144,11 +144,11 @@ export interface Campagne {
 }
 
 export const campagnes: Campagne[] = [
-  { id: "CAM-201", nom: "Collection été 2026", plateforme: "Facebook", objectif: "Ventes", budget: 500, depense: 350, impressions: "184 200", clics: "6 420", statut: "Active" },
-  { id: "CAM-198", nom: "Retargeting visiteurs", plateforme: "Facebook", objectif: "Trafic", budget: 200, depense: 200, impressions: "96 800", clics: "3 150", statut: "Terminée" },
-  { id: "CAM-205", nom: "Lancement produit X", plateforme: "TikTok", objectif: "Notoriété", budget: 400, depense: 180, impressions: "512 000", clics: "12 300", statut: "Active" },
-  { id: "CAM-207", nom: "Leads B2B juillet", plateforme: "TikTok", objectif: "Génération de leads", budget: 350, depense: 95, impressions: "88 400", clics: "2 010", statut: "Active" },
-  { id: "CAM-209", nom: "Promo rentrée", plateforme: "TikTok", objectif: "Ventes", budget: 600, depense: 0, impressions: "—", clics: "—", statut: "En validation" },
+  { id: "CAM-201", nom: "Collection été 2026", plateforme: "Facebook", objectif: "Ventes", budget: 328000, depense: 229500, impressions: "184 200", clics: "6 420", statut: "Active" },
+  { id: "CAM-198", nom: "Retargeting visiteurs", plateforme: "Facebook", objectif: "Trafic", budget: 131000, depense: 131000, impressions: "96 800", clics: "3 150", statut: "Terminée" },
+  { id: "CAM-205", nom: "Lancement produit X", plateforme: "TikTok", objectif: "Notoriété", budget: 262000, depense: 118000, impressions: "512 000", clics: "12 300", statut: "Active" },
+  { id: "CAM-207", nom: "Leads B2B juillet", plateforme: "TikTok", objectif: "Génération de leads", budget: 229500, depense: 62000, impressions: "88 400", clics: "2 010", statut: "Active" },
+  { id: "CAM-209", nom: "Promo rentrée", plateforme: "TikTok", objectif: "Ventes", budget: 393500, depense: 0, impressions: "—", clics: "—", statut: "En validation" },
 ];
 
 export interface CommandeSEO {
@@ -189,7 +189,7 @@ export const tickets: Ticket[] = [
 ];
 
 export const activitesRecentes = [
-  { texte: "Paiement de 350 € reçu — Campagne Facebook « Collection été »", temps: "Il y a 2 h", type: "paiement" },
+  { texte: "Paiement de 229 500 FCFA reçu — Campagne Facebook « Collection été »", temps: "Il y a 2 h", type: "paiement" },
   { texte: "Analyse du site entreprise.com terminée — score 87/100", temps: "Il y a 4 h", type: "analyse" },
   { texte: "Nouvel email professionnel créé : sales@entreprise.com", temps: "Hier", type: "email" },
   { texte: "Audit SEO national : progression 68 %", temps: "Hier", type: "seo" },
@@ -206,19 +206,19 @@ export const notifications = [
 
 export const statsAdmin = [
   { label: "Utilisateurs", valeur: "10 482", variation: "+312 ce mois" },
-  { label: "Revenu mensuel (MRR)", valeur: "148 250 €", variation: "+8,4 %" },
+  { label: "Revenu mensuel (MRR)", valeur: "97,2 M FCFA", variation: "+8,4 %" },
   { label: "Commandes en cours", valeur: "236", variation: "18 en attente" },
   { label: "Tickets ouverts", valeur: "42", variation: "temps de réponse 1,8 h" },
 ];
 
 export const revenusMensuelsAdmin = [
-  { mois: "Jan", montant: 98400 },
-  { mois: "Fév", montant: 104200 },
-  { mois: "Mar", montant: 112800 },
-  { mois: "Avr", montant: 121500 },
-  { mois: "Mai", montant: 131900 },
-  { mois: "Juin", montant: 139600 },
-  { mois: "Juil", montant: 148250 },
+  { mois: "Jan", montant: 64500000 },
+  { mois: "Fév", montant: 68300000 },
+  { mois: "Mar", montant: 74000000 },
+  { mois: "Avr", montant: 79700000 },
+  { mois: "Mai", montant: 86500000 },
+  { mois: "Juin", montant: 91600000 },
+  { mois: "Juil", montant: 97200000 },
 ];
 
 export interface UtilisateurAdmin {
@@ -250,12 +250,12 @@ export interface CommandeAdmin {
 }
 
 export const commandesAdmin: CommandeAdmin[] = [
-  { id: "CMD-3121", client: "Entreprise SARL", service: "Campagne Facebook Ads", montant: 350, statut: "En cours", date: "2026-07-02" },
-  { id: "CMD-3118", client: "CohenTech", service: "SEO International", montant: 1450, statut: "En cours", date: "2026-07-01" },
-  { id: "CMD-3115", client: "Ndiaye Mode", service: "Hébergement Premium (1 an)", montant: 199, statut: "Livrée", date: "2026-06-29" },
-  { id: "CMD-3109", client: "Dossou Consulting", service: "Campagne TikTok Ads", montant: 600, statut: "En attente", date: "2026-06-27" },
-  { id: "CMD-3102", client: "Mensah Group", service: "Domaine mensah.africa", montant: 15.99, statut: "Livrée", date: "2026-06-25" },
-  { id: "CMD-3097", client: "Lavigne & Fils", service: "Audit SEO Local", montant: 290, statut: "Annulée", date: "2026-06-22" },
+  { id: "CMD-3121", client: "Entreprise SARL", service: "Campagne Facebook Ads", montant: 229500, statut: "En cours", date: "2026-07-02" },
+  { id: "CMD-3118", client: "CohenTech", service: "SEO International", montant: 951000, statut: "En cours", date: "2026-07-01" },
+  { id: "CMD-3115", client: "Ndiaye Mode", service: "Hébergement Premium (1 an)", montant: 156000, statut: "Livrée", date: "2026-06-29" },
+  { id: "CMD-3109", client: "Dossou Consulting", service: "Campagne TikTok Ads", montant: 393500, statut: "En attente", date: "2026-06-27" },
+  { id: "CMD-3102", client: "Mensah Group", service: "Domaine mensah.africa", montant: 10500, statut: "Livrée", date: "2026-06-25" },
+  { id: "CMD-3097", client: "Lavigne & Fils", service: "Audit SEO Local", montant: 190000, statut: "Annulée", date: "2026-06-22" },
 ];
 
 export const logsAdmin = [

@@ -54,7 +54,16 @@ src/
   vraie base (Prisma/PostgreSQL), une vraie analyse (PageSpeed API), un vrai registrar
   et de vrais PSP (Stripe, Flutterwave, Paystack, Wave…).
 
+## Devise
+
+Tous les montants de la plateforme sont en **FCFA (XOF)** — devise de la zone UEMOA,
+sans centimes (montants entiers). Le formatage est centralisé dans
+[`src/lib/devise.ts`](src/lib/devise.ts) (`fcfa()` et `fcfaCompact()`).
+
 ## Documentation
 
 - [`docs/ARCHITECTURE-UX.md`](docs/ARCHITECTURE-UX.md) — identité visuelle, sitemap,
   parcours utilisateur, wireframes décrits, contenu marketing et plan technique.
+- [`docs/INTEGRATIONS-API.md`](docs/INTEGRATIONS-API.md) — fournisseurs d'API recommandés
+  par module (FedaPay, KkiaPay, CinetPay, Flutterwave, PageSpeed, Domainr, Meta/TikTok
+  Marketing API…), avec un ordre d'intégration conseillé pour l'Afrique de l'Ouest.

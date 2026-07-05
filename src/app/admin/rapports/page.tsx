@@ -4,11 +4,11 @@ import { CarteSection, PageHeader, StatCard } from "@/components/ui";
 import { revenusMensuelsAdmin, trafic30Jours } from "@/lib/data";
 
 const revenusParService = [
-  { categorie: "Hébergement", montant: 48200, couleur: "#2563eb" },
-  { categorie: "Publicité", montant: 41700, couleur: "#6366f1" },
-  { categorie: "SEO", montant: 32400, couleur: "#8b5cf6" },
-  { categorie: "Domaines", montant: 15950, couleur: "#0ea5e9" },
-  { categorie: "Emails", montant: 10000, couleur: "#94a3b8" },
+  { categorie: "Hébergement", montant: 31600000, couleur: "#2563eb" },
+  { categorie: "Publicité", montant: 27400000, couleur: "#6366f1" },
+  { categorie: "SEO", montant: 21300000, couleur: "#8b5cf6" },
+  { categorie: "Domaines", montant: 10500000, couleur: "#0ea5e9" },
+  { categorie: "Emails", montant: 6600000, couleur: "#94a3b8" },
 ];
 
 export default function RapportsPage() {
@@ -30,7 +30,7 @@ export default function RapportsPage() {
         <CarteSection titre="Revenus mensuels">
           <BarChart
             data={revenusMensuelsAdmin.map((r) => ({ label: r.mois, valeur: r.montant }))}
-            unite="k€"
+            unite="FCFA"
           />
         </CarteSection>
 

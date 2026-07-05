@@ -10,6 +10,7 @@ import {
 import { BarreProgression } from "@/components/charts";
 import { CarteSection, PageHeader, Tableau, badgeStatut } from "@/components/ui";
 import { commandesSEO, motsClesSEO } from "@/lib/data";
+import { fcfa } from "@/lib/devise";
 
 interface OffreSEO {
   id: string;
@@ -24,7 +25,7 @@ const OFFRES: OffreSEO[] = [
   {
     id: "local",
     nom: "SEO Local",
-    prix: 290,
+    prix: 190000,
     description: "Dominez les recherches dans votre ville et votre région.",
     recommande: false,
     inclus: [
@@ -38,7 +39,7 @@ const OFFRES: OffreSEO[] = [
   {
     id: "national",
     nom: "SEO National",
-    prix: 490,
+    prix: 321000,
     description: "Positionnez-vous sur tout le marché national.",
     recommande: true,
     inclus: [
@@ -52,7 +53,7 @@ const OFFRES: OffreSEO[] = [
   {
     id: "international",
     nom: "SEO International",
-    prix: 990,
+    prix: 650000,
     description: "Rayonnez sur plusieurs pays et plusieurs langues.",
     recommande: false,
     inclus: [
@@ -137,7 +138,7 @@ export default function SEOPage() {
                   )}
                 </div>
                 <p className="mt-3 text-2xl font-bold text-gray-900 dark:text-white">
-                  {o.prix.toLocaleString("fr-FR")} €
+                  {fcfa(o.prix)}
                   <span className="text-sm font-medium text-gray-500 dark:text-gray-400"> / audit</span>
                 </p>
                 <ul className="mt-4 space-y-2">
@@ -194,7 +195,7 @@ export default function SEOPage() {
               <p className="mt-1 text-emerald-700 dark:text-emerald-400">
                 Audit <span className="font-semibold">{commande.offre.nom}</span> pour{" "}
                 <span className="font-semibold">{commande.site}</span> —{" "}
-                {commande.offre.prix.toLocaleString("fr-FR")} €. Notre équipe démarre sous 24 h et
+                {fcfa(commande.offre.prix)}. Notre équipe démarre sous 24 h et
                 vous recevrez le rapport complet par email.
               </p>
             </div>

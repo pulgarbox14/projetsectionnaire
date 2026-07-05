@@ -11,6 +11,7 @@ import {
 import type { LucideIcon } from "lucide-react";
 import { CarteSection, PageHeader, Tableau, badgeStatut } from "@/components/ui";
 import { methodesPaiement, paiements } from "@/lib/data";
+import { fcfa } from "@/lib/devise";
 
 const ICONES_METHODES: Record<string, LucideIcon> = {
   "Carte bancaire": CreditCard,
@@ -83,7 +84,7 @@ export default function PaiementsPage() {
                 <td className="py-3 pr-4 text-gray-500 dark:text-gray-400">{p.date}</td>
                 <td className="py-3 pr-4 text-gray-700 dark:text-gray-300">{p.methode}</td>
                 <td className="py-3 pr-4 font-semibold text-gray-900 dark:text-white">
-                  {p.montant.toLocaleString("fr-FR")} €
+                  {fcfa(p.montant)}
                 </td>
                 <td className="py-3">
                   <span className={badgeStatut(p.statut)}>{p.statut}</span>
@@ -95,7 +96,7 @@ export default function PaiementsPage() {
                 Total
               </td>
               <td className="py-3 pr-4 font-bold text-gray-900 dark:text-white">
-                {totalPaiements.toLocaleString("fr-FR")} €
+                {fcfa(totalPaiements)}
               </td>
               <td className="py-3" />
             </tr>

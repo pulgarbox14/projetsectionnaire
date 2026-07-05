@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { CarteSection, PageHeader, Tableau, badgeStatut } from "@/components/ui";
 import { domainesPossedes } from "@/lib/data";
+import { fcfa } from "@/lib/devise";
 import type { ResultatDomaine } from "@/lib/analyse";
 
 export default function DomainesPage() {
@@ -117,7 +118,7 @@ export default function DomainesPage() {
                 <p className="mt-0.5 text-sm text-gray-600 dark:text-gray-400">
                   Total première année :{" "}
                   <span className="font-bold text-gray-900 dark:text-white">
-                    {total.toLocaleString("fr-FR", { minimumFractionDigits: 2 })} €
+                    {fcfa(total)}
                   </span>
                 </p>
               </div>
@@ -153,13 +154,12 @@ export default function DomainesPage() {
                 </div>
                 <div className="mt-4 flex items-baseline gap-2">
                   <p className="text-xl font-bold text-gray-900 dark:text-white">
-                    {r.prix.toLocaleString("fr-FR", { minimumFractionDigits: 2 })} €
+                    {fcfa(r.prix)}
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">la première année</p>
                 </div>
                 <p className="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
-                  Renouvellement :{" "}
-                  {r.prixRenouvellement.toLocaleString("fr-FR", { minimumFractionDigits: 2 })} €/an
+                  Renouvellement : {fcfa(r.prixRenouvellement)}/an
                 </p>
                 <div className="mt-4">
                   {r.disponible ? (

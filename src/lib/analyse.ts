@@ -111,19 +111,20 @@ export interface ResultatDomaine {
   prixRenouvellement: number;
 }
 
+// Prix en FCFA (XOF)
 const EXTENSIONS: { ext: string; prix: number; renouvellement: number }[] = [
-  { ext: ".com", prix: 11.99, renouvellement: 14.99 },
-  { ext: ".net", prix: 12.99, renouvellement: 15.99 },
-  { ext: ".org", prix: 10.99, renouvellement: 13.99 },
-  { ext: ".fr", prix: 7.99, renouvellement: 9.99 },
-  { ext: ".io", prix: 39.99, renouvellement: 49.99 },
-  { ext: ".ai", prix: 74.99, renouvellement: 89.99 },
-  { ext: ".africa", prix: 15.99, renouvellement: 19.99 },
-  { ext: ".bj", prix: 24.99, renouvellement: 29.99 },
-  { ext: ".co", prix: 27.99, renouvellement: 32.99 },
-  { ext: ".app", prix: 16.99, renouvellement: 19.99 },
-  { ext: ".dev", prix: 14.99, renouvellement: 17.99 },
-  { ext: ".shop", prix: 3.99, renouvellement: 34.99 },
+  { ext: ".com", prix: 7900, renouvellement: 9800 },
+  { ext: ".net", prix: 8500, renouvellement: 10500 },
+  { ext: ".org", prix: 7200, renouvellement: 9200 },
+  { ext: ".fr", prix: 5200, renouvellement: 6500 },
+  { ext: ".io", prix: 26000, renouvellement: 32500 },
+  { ext: ".ai", prix: 49000, renouvellement: 59000 },
+  { ext: ".africa", prix: 10500, renouvellement: 13000 },
+  { ext: ".bj", prix: 16500, renouvellement: 19500 },
+  { ext: ".co", prix: 18500, renouvellement: 21500 },
+  { ext: ".app", prix: 11000, renouvellement: 13000 },
+  { ext: ".dev", prix: 9800, renouvellement: 11800 },
+  { ext: ".shop", prix: 2600, renouvellement: 23000 },
 ];
 
 export function rechercherDomaine(nom: string): ResultatDomaine[] {

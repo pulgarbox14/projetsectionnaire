@@ -4,18 +4,19 @@ import { useState } from "react";
 import { AlertTriangle, CheckCircle2, Clock, Download } from "lucide-react";
 import { CarteSection, PageHeader, StatCard, Tableau, badgeStatut } from "@/components/ui";
 import { factures, utilisateurDemo, type Facture } from "@/lib/data";
+import { fcfa } from "@/lib/devise";
 
 type Onglet = "Factures" | "Devis" | "Reçus";
 
 const devis: Facture[] = [
-  { id: "DEV-2026-0021", date: "2026-07-01", description: "Devis — Refonte complète du site vitrine", montant: 2400, statut: "En attente" },
-  { id: "DEV-2026-0019", date: "2026-06-24", description: "Devis — Pack SEO International (6 mois)", montant: 3600, statut: "En attente" },
+  { id: "DEV-2026-0021", date: "2026-07-01", description: "Devis — Refonte complète du site vitrine", montant: 1575000, statut: "En attente" },
+  { id: "DEV-2026-0019", date: "2026-06-24", description: "Devis — Pack SEO International (6 mois)", montant: 2360000, statut: "En attente" },
 ];
 
 const recus: Facture[] = [
-  { id: "REC-2026-0087", date: "2026-07-02", description: "Reçu — Campagne Facebook Ads « Collection été »", montant: 350, statut: "Payée" },
-  { id: "REC-2026-0084", date: "2026-06-28", description: "Reçu — Hébergement Business (mensuel)", montant: 24.99, statut: "Payée" },
-  { id: "REC-2026-0079", date: "2026-06-21", description: "Reçu — Audit SEO national de juin", montant: 490, statut: "Payée" },
+  { id: "REC-2026-0087", date: "2026-07-02", description: "Reçu — Campagne Facebook Ads « Collection été »", montant: 229500, statut: "Payée" },
+  { id: "REC-2026-0084", date: "2026-06-28", description: "Reçu — Hébergement Business (mensuel)", montant: 16400, statut: "Payée" },
+  { id: "REC-2026-0079", date: "2026-06-21", description: "Reçu — Audit SEO national de juin", montant: 321500, statut: "Payée" },
 ];
 
 const DONNEES: Record<Onglet, Facture[]> = {
@@ -59,11 +60,11 @@ function telechargerFacture(f: Facture) {
   <table>
     <thead><tr><th>Description</th><th style="text-align:right;">Montant</th></tr></thead>
     <tbody>
-      <tr><td>${f.description}</td><td style="text-align:right;">${f.montant.toLocaleString("fr-FR")} €</td></tr>
+      <tr><td>${f.description}</td><td style="text-align:right;">${fcfa(f.montant)}</td></tr>
     </tbody>
   </table>
-  <p class="total">Total TTC : ${f.montant.toLocaleString("fr-FR")} €</p>
-  <p class="pied">Nexora — Merci de votre confiance. Ce document a été généré automatiquement.</p>
+  <p class="total">Total TTC : ${fcfa(f.montant)}</p>
+  <p class="pied">Nexora — Merci de votre confiance. Ce document a été généré automatiquement. Montants exprimés en FCFA (XOF).</p>
 </body>
 </html>`;
   const blob = new Blob([html], { type: "text/html;charset=utf-8" });
@@ -101,19 +102,19 @@ export default function FacturesPage() {
       <div className="grid gap-5 sm:grid-cols-3">
         <StatCard
           label="Montant payé"
-          valeur={`${montantPaye.toLocaleString("fr-FR")} €`}
+          valeur={fcfa(montantPaye)}
           variation={`${factures.filter((f) => f.statut === "Payée").length} factures réglées`}
           icone={<CheckCircle2 size={18} />}
         />
         <StatCard
           label="En attente"
-          valeur={`${montantAttente.toLocaleString("fr-FR")} €`}
+          valeur={fcfa(montantAttente)}
           variation={`${factures.filter((f) => f.statut === "En attente").length} facture à régler`}
           icone={<Clock size={18} />}
         />
         <StatCard
           label="Échu"
-          valeur={`${montantEchu.toLocaleString("fr-FR")} €`}
+          valeur={fcfa(montantEchu)}
           variation={`${factures.filter((f) => f.statut === "Échue").length} facture en retard`}
           icone={<AlertTriangle size={18} />}
         />
@@ -154,7 +155,7 @@ export default function FacturesPage() {
                 <td className="py-3 pr-4 text-gray-500 dark:text-gray-400">{f.date}</td>
                 <td className="py-3 pr-4 text-gray-700 dark:text-gray-300">{f.description}</td>
                 <td className="py-3 pr-4 font-semibold text-gray-900 dark:text-white">
-                  {f.montant.toLocaleString("fr-FR")} €
+                  {fcfa(f.montant)}
                 </td>
                 <td className="py-3 pr-4">
                   <span className={badgeStatut(f.statut)}>{f.statut}</span>

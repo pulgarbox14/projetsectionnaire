@@ -3,6 +3,8 @@
 // Bibliothèque de graphiques SVG légère, compatible dark mode,
 // sans dépendance externe.
 
+import { fcfaCompact } from "@/lib/devise";
+
 export function BarChart({
   data,
   hauteur = 180,
@@ -10,14 +12,12 @@ export function BarChart({
 }: {
   data: { label: string; valeur: number }[];
   hauteur?: number;
-  /** Unité affichée au survol : "" | "€" | "k€" (sérialisable serveur → client). */
-  unite?: "" | "€" | "k€";
+  /** Unité affichée au survol : "" | "FCFA" (sérialisable serveur → client). */
+  unite?: "" | "FCFA";
 }) {
   const max = Math.max(...data.map((d) => d.valeur), 1);
   const format = (v: number) =>
-    unite === "k€"
-      ? `${Math.round(v / 1000).toLocaleString("fr-FR")} k€`
-      : `${v.toLocaleString("fr-FR")}${unite ? ` ${unite}` : ""}`;
+    unite === "FCFA" ? fcfaCompact(v) : v.toLocaleString("fr-FR");
   return (
     <div className="flex items-end gap-2 sm:gap-3" style={{ height: hauteur }}>
       {data.map((d) => (
@@ -127,10 +127,10 @@ export function DonutChart({
           y="47"
           textAnchor="middle"
           className="fill-gray-900 dark:fill-white"
-          fontSize="13"
+          fontSize="11"
           fontWeight="700"
         >
-          {total.toLocaleString("fr-FR")} €
+          {fcfaCompact(total)}
         </text>
         <text x="50" y="60" textAnchor="middle" className="fill-gray-500 dark:fill-gray-400" fontSize="7">
           Total
@@ -142,7 +142,7 @@ export function DonutChart({
             <span className="h-2.5 w-2.5 rounded-full" style={{ background: d.couleur }} />
             <span className="text-gray-600 dark:text-gray-300">{d.categorie}</span>
             <span className="ml-auto pl-4 font-semibold text-gray-900 dark:text-white">
-              {d.montant.toLocaleString("fr-FR")} €
+              {fcfaCompact(d.montant)}
             </span>
           </li>
         ))}

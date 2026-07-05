@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { CarteSection, PageHeader, StatCard, Tableau, badgeStatut } from "@/components/ui";
 import { campagnes, methodesPaiement } from "@/lib/data";
+import { fcfa, fcfaCompact } from "@/lib/devise";
 
 const OBJECTIFS = ["Trafic", "Ventes", "Notoriété", "Génération de leads"];
 const PAYS = ["Bénin", "France", "Sénégal", "Côte d'Ivoire", "Multi-pays (Afrique de l'Ouest)"];
@@ -27,7 +28,7 @@ export default function FacebookAdsPage() {
   const impressionsTotales = campagnesFacebook.reduce((a, c) => a + versNombre(c.impressions), 0);
 
   const [objectif, setObjectif] = useState(OBJECTIFS[0]);
-  const [budget, setBudget] = useState("300");
+  const [budget, setBudget] = useState("300000");
   const [pays, setPays] = useState(PAYS[0]);
   const [audience, setAudience] = useState("");
   const [texteAnnonce, setTexteAnnonce] = useState("");
@@ -67,7 +68,7 @@ export default function FacebookAdsPage() {
         />
         <StatCard
           label="Budget total"
-          valeur={`${budgetTotal.toLocaleString("fr-FR")} €`}
+          valeur={fcfaCompact(budgetTotal)}
           variation="Toutes campagnes Facebook"
           icone={<Wallet size={18} />}
         />
@@ -94,7 +95,7 @@ export default function FacebookAdsPage() {
                 <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
                   Numéro de commande :{" "}
                   <span className="font-semibold text-gray-900 dark:text-white">{numeroCommande}</span>
-                  {" "}· {objectif} · {budgetNum.toLocaleString("fr-FR")} € · {duree} jours · paiement par {paiement}
+                  {" "}· {objectif} · {fcfa(budgetNum)} · {duree} jours · paiement par {paiement}
                 </p>
               </div>
               <button type="button" onClick={reinitialiser} className="btn-secondary">
@@ -129,17 +130,17 @@ export default function FacebookAdsPage() {
 
               <div>
                 <label htmlFor="fb-budget" className="label">
-                  Budget total (€)
+                  Budget total (FCFA)
                 </label>
                 <input
                   id="fb-budget"
                   type="number"
-                  min={50}
-                  step={10}
+                  min={30000}
+                  step={5000}
                   value={budget}
                   onChange={(e) => setBudget(e.target.value)}
                   className="input"
-                  placeholder="300"
+                  placeholder="300000"
                 />
               </div>
 
@@ -251,13 +252,13 @@ export default function FacebookAdsPage() {
                   <div>
                     <p className="text-xs text-gray-500 dark:text-gray-400">Budget</p>
                     <p className="mt-0.5 text-sm font-semibold text-gray-900 dark:text-white">
-                      {budgetNum.toLocaleString("fr-FR")} €
+                      {fcfa(budgetNum)}
                     </p>
                   </div>
                   <div>
                     <p className="text-xs text-gray-500 dark:text-gray-400">Durée</p>
                     <p className="mt-0.5 text-sm font-semibold text-gray-900 dark:text-white">
-                      {duree} jours ({(budgetNum / duree).toLocaleString("fr-FR", { maximumFractionDigits: 2 })} € / jour)
+                      {duree} jours ({fcfa(budgetNum / duree)} / jour)
                     </p>
                   </div>
                 </div>
@@ -281,7 +282,7 @@ export default function FacebookAdsPage() {
                   </div>
                   <button type="submit" className="btn-primary shrink-0">
                     <CreditCard size={17} />
-                    Procéder au paiement — {budgetNum.toLocaleString("fr-FR")} €
+                    Procéder au paiement — {fcfa(budgetNum)}
                   </button>
                 </div>
               </div>
@@ -300,10 +301,10 @@ export default function FacebookAdsPage() {
                 <td className="py-3 pr-4 font-medium text-gray-900 dark:text-white">{c.nom}</td>
                 <td className="py-3 pr-4 text-gray-700 dark:text-gray-300">{c.objectif}</td>
                 <td className="py-3 pr-4 font-semibold text-gray-900 dark:text-white">
-                  {c.budget.toLocaleString("fr-FR")} €
+                  {fcfa(c.budget)}
                 </td>
                 <td className="py-3 pr-4 text-gray-700 dark:text-gray-300">
-                  {c.depense.toLocaleString("fr-FR")} €
+                  {fcfa(c.depense)}
                 </td>
                 <td className="py-3 pr-4 text-gray-500 dark:text-gray-400">{c.impressions}</td>
                 <td className="py-3 pr-4 text-gray-500 dark:text-gray-400">{c.clics}</td>

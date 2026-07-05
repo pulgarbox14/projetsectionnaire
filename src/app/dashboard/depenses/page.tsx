@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { BarChart, DonutChart } from "@/components/charts";
 import { CarteSection, PageHeader, StatCard, Tableau } from "@/components/ui";
+import { fcfa } from "@/lib/devise";
 import {
   depensesInitiales,
   depensesMensuelles,
@@ -84,7 +85,7 @@ export default function DepensesPage() {
   }
 
   function contenuExport(separateur: string): string {
-    const entetes = ["Date", "Catégorie", "Description", "N° de facture", "Montant (€)"];
+    const entetes = ["Date", "Catégorie", "Description", "N° de facture", "Montant (FCFA)"];
     const lignes = depenses.map((d) =>
       [d.date, d.categorie, d.description, d.facture, d.montant.toString().replace(".", ",")]
         .map(champCsv)
@@ -144,19 +145,19 @@ export default function DepensesPage() {
       <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard
           label="Total du mois en cours"
-          valeur={`${totalMois.toLocaleString("fr-FR")} €`}
+          valeur={fcfa(totalMois)}
           variation="Juillet 2026"
           icone={<Wallet size={18} />}
         />
         <StatCard
           label="Total annuel"
-          valeur={`${totalAnnuel.toLocaleString("fr-FR")} €`}
+          valeur={fcfa(totalAnnuel)}
           variation="Janvier — Juillet"
           icone={<TrendingUp size={18} />}
         />
         <StatCard
           label="Moyenne mensuelle"
-          valeur={`${moyenneMensuelle.toLocaleString("fr-FR", { maximumFractionDigits: 0 })} €`}
+          valeur={fcfa(moyenneMensuelle)}
           variation={`Sur ${depensesMensuelles.length} mois`}
           icone={<CalendarDays size={18} />}
         />
@@ -172,7 +173,7 @@ export default function DepensesPage() {
         <CarteSection titre="Dépenses mensuelles">
           <BarChart
             data={depensesMensuelles.map((d) => ({ label: d.mois, valeur: d.montant }))}
-            unite="€"
+            unite="FCFA"
           />
         </CarteSection>
         <CarteSection titre="Répartition par catégorie">
@@ -202,17 +203,17 @@ export default function DepensesPage() {
             </div>
             <div>
               <label htmlFor="dep-montant" className="label">
-                Montant (€)
+                Montant (FCFA)
               </label>
               <input
                 id="dep-montant"
                 type="number"
                 min="0"
-                step="0.01"
+                step="500"
                 required
                 value={montant}
                 onChange={(e) => setMontant(e.target.value)}
-                placeholder="120,00"
+                placeholder="25000"
                 className="input"
               />
             </div>
@@ -276,7 +277,7 @@ export default function DepensesPage() {
                 <td className="py-3 pr-4 text-gray-700 dark:text-gray-300">{d.description}</td>
                 <td className="py-3 pr-4 text-gray-500 dark:text-gray-400">{d.facture}</td>
                 <td className="py-3 pr-4 font-semibold text-gray-900 dark:text-white">
-                  {d.montant.toLocaleString("fr-FR")} €
+                  {fcfa(d.montant)}
                 </td>
                 <td className="py-3">
                   <button

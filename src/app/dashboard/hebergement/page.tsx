@@ -7,25 +7,26 @@ import {
   Server,
 } from "lucide-react";
 import { CarteSection, PageHeader, Tableau } from "@/components/ui";
+import { fcfa } from "@/lib/devise";
 
 const OFFRES = [
   {
     nom: "Starter",
-    prix: "4,99",
+    prix: 3000,
     description: "Pour lancer votre premier site en toute simplicité.",
     avantages: ["1 site web", "SSL gratuit", "Sauvegarde hebdomadaire", "1 adresse email"],
     populaire: false,
   },
   {
     nom: "Business",
-    prix: "9,99",
+    prix: 6500,
     description: "Le meilleur équilibre entre performance et budget.",
     avantages: ["Sites illimités", "Performance élevée", "Sauvegarde quotidienne", "CDN mondial"],
     populaire: true,
   },
   {
     nom: "Premium",
-    prix: "19,99",
+    prix: 13000,
     description: "Puissance maximale pour les projets exigeants.",
     avantages: [
       "Hébergement ultra rapide NVMe",
@@ -95,7 +96,7 @@ export default function HebergementPage() {
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{offre.description}</p>
             <p className="mt-4">
               <span className="text-3xl font-bold text-gray-900 dark:text-white">
-                {offre.prix} €
+                {fcfa(offre.prix)}
               </span>
               <span className="text-sm text-gray-500 dark:text-gray-400"> /mois</span>
             </p>

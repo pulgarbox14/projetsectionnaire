@@ -37,7 +37,7 @@ function Interrupteur({
 export default function ParametresPage() {
   const [nomPlateforme, setNomPlateforme] = useState("Nexora");
   const [url, setUrl] = useState("https://nexora.com");
-  const [devise, setDevise] = useState("EUR");
+  const [devise, setDevise] = useState("XOF");
   const [langue, setLangue] = useState("Français");
 
   const [methodesActives, setMethodesActives] = useState<Record<string, boolean>>(
@@ -132,9 +132,9 @@ export default function ParametresPage() {
                   onChange={(e) => setDevise(e.target.value)}
                   className="input"
                 >
+                  <option value="XOF">XOF (FCFA) — Franc CFA</option>
                   <option value="EUR">EUR — Euro</option>
                   <option value="USD">USD — Dollar américain</option>
-                  <option value="XOF">XOF — Franc CFA</option>
                 </select>
               </div>
               <div>

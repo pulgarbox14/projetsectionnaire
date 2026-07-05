@@ -23,6 +23,8 @@
 
 **Ton éditorial** : professionnel, direct, orienté bénéfice. Vouvoiement. Vocabulaire concret (« en 60 secondes », « sans carte bancaire »).
 
+**Devise** : tous les montants sont en **FCFA (XOF)**, entiers et sans centimes (zone UEMOA). Formatage centralisé dans `src/lib/devise.ts` ; les fournisseurs de paiement recommandés (FedaPay, KkiaPay, CinetPay, Flutterwave…) sont détaillés dans `docs/INTEGRATIONS-API.md`.
+
 ---
 
 ## 2. Sitemap
